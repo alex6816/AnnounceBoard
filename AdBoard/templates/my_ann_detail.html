@@ -1,0 +1,45 @@
+{% extends 's_base.html' %}
+
+{% block content %}
+<ul class="list-articles">
+
+	<h1>{{ ann_one.title }}</h1><br>
+
+	{% autoescape off %}
+	{{ ann_one.content }}
+    {% endautoescape %}
+<br><br>
+</ul>
+
+    <a href="{% url 'ann_update' ann_one.pk %}">Редактировать объявление</a>  &nbsp;&nbsp;
+	<a href="{% url 'ann_delete' ann_one.pk %}">Удалить объявление</a>
+    <br><br>
+	<hr>
+
+	<h2>Отклики</h2>
+
+
+       <table width="100%" border="1">
+           <tr>
+               <th width="85%">Содержание отклика</th>
+               <th>Статус</th>
+           </tr>
+           {% for r in respond %}
+           <tr>
+               <td>{{ r.text }}</td>
+               <td align="center">
+                   {% if r.status %}
+                       Принято
+                   {% else %}
+                       <a href="{% url 'res_status' r.pk %}">На рассмотрении</a>
+                   {% endif %}
+               </td>
+
+           </tr>
+           {% endfor %}
+
+       </table>
+
+
+
+{% endblock %}

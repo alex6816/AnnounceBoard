@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul class="list-articles">
+
+	<h1>{{ ann_one.title }}</h1><br>
+
+	{% autoescape off %}
+	{{ ann_one.content }}
+    {% endautoescape %}
+</ul>
+
+{% if user.is_authenticated %}
+
+<h4>Добавить отклик</h4>
+
+<div>
+
+	<form method="POST">
+		{% csrf_token %}
+		{{ form.text }}
+		<br><br><input type="submit" value="Добавить">
+    </form>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 's_base.html' %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+<br>
+<ul class="list-articles">
+	{% for p in ann %}
+			<li><div class="article-panel">
+	<p class="first">Категория: {{ p.category }}</p>
+	<p class="last">Дата: {{ p.dateCreation }}</p>
+			</div>
+
+				<h2>{{ p.title }}</h2>
+	{% autoescape off %}
+	{{p.content|linebreaks|truncatewords:50}}
+	{% endautoescape %}
+
+			<div>
+				<p class="link-read-post"><a href="{% url 'my_ann_detail' p.pk %}">Подробнее</a></p>
+			</div>
+				<br><br>
+			<div class="clear"></div>
+                <li>
+			    </li>
+	{% endfor %}
+
+</ul>
+{% endblock %}

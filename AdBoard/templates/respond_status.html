@@ -1,0 +1,17 @@
+{% extends 's_base.html' %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+<br>
+
+{{ respond.text }}
+<br><br><br>
+<div>
+    <a href="{% url 'res_accept' respond.pk %}">Принять</a>  &nbsp;&nbsp;
+	<a href="{% url 'res_remove' respond.pk %}">Удалить</a>
+</div>
+
+
+
+
+{% endblock %}
