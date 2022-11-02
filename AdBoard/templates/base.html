@@ -7,6 +7,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="shortcut icon" href="{% static 'images/main.ico' %}" type="image/x-icon"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script
+    async
+    charset="utf-8"
+    src="//cdn.embedly.com/widgets/platform.js"></script>
+
 </head>
 <body>
 <table class="table-page" border=0 cellpadding="0" cellspacing="0">
@@ -77,5 +83,17 @@
 	</div>
 </td></tr></table>
 <!-- Конец footer'а и страницы -->
+
+  <script>
+    document.querySelectorAll('oembed[url]').forEach(element => {
+      const anchor = document.createElement('a')
+
+      anchor.setAttribute('href', element.getAttribute('url'))
+      anchor.className = 'embedly-card'
+
+      element.appendChild(anchor)
+    })
+  </script>
+
 </body>
 </html>

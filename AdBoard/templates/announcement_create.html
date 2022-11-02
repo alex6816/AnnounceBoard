@@ -6,7 +6,7 @@
 
 <form  action="{% url 'ann_create' %}" method="post">
     {% csrf_token %}
-
+    {{ form.media }}
 {% for f in form %}
     <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p>
     <div class="form-error">{{ f.error }}</div>
